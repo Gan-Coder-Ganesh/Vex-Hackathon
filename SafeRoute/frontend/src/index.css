@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #18181b;
+  /* zinc-900 */
+  color: white;
+}
+
+/* Pulsating User Marker */
+.user-marker {
+  position: relative;
+}
+
+.user-marker::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background-color: #3b82f6;
+  /* blue-500 */
+  border-radius: 50%;
+  z-index: 2;
+  border: 2px solid white;
+}
+
+.user-marker::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  background-color: rgba(59, 130, 246, 0.4);
+  border-radius: 50%;
+  animation: pulse-ring 2s infinite;
+  z-index: 1;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Leaflet Routing Machine overrides for Dark Mode/Custom Look */
+.leaflet-routing-container {
+  background-color: #1e293b !important;
+  /* slate-800 */
+  color: white !important;
+  border: 1px solid #334155 !important;
+}
+
+.leaflet-routing-alt {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.leaflet-routing-alt table {
+  color: #cbd5e1;
+}
+
+.leaflet-routing-alt tr:hover {
+  background-color: #334155 !important;
+}
